@@ -110,7 +110,7 @@ body{
     transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1530px) {
     .head-info {
         flex-wrap: wrap; /* Разрешаем перенос элементов */
     }
@@ -131,6 +131,7 @@ body{
         padding: 20px 0;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         flex-direction: column;
+        z-index: 1;
     }
 
     /* Класс, который мы добавим через JS для открытия меню */
@@ -160,6 +161,19 @@ body{
     .burger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -7px);
     }
+
+    .chef{
+        display: none;
+    }
+
+    .plate{
+        display: none;
+    }
+
+    .container{
+        max-width: 600px;
+    }
+    
 }
 
 /* Готовка */
@@ -438,6 +452,12 @@ body{
    
 }
 
+@media (max-width: 1742){
+    .section-heading{
+        margin-left: 20px;
+    }
+}
+
 
 
 .line{
@@ -448,60 +468,133 @@ body{
 
 .carousel{
     margin-top: 40px;
+    overflow: hidden; /* Скрываем всё, что вылезает за границы */
 }
 
-.cards{
-    margin-top: 30px;
+/* Обертка для позиционирования кнопок */
+.cards-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Трек карусели */
+.cards-track {
     display: flex;
-    gap: 200px;
-    width: 100%;
-    max-width: 1900px;
-
+    gap: 20px; /* Уменьшили с 200px до 20px */
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    scroll-behavior: smooth; /* Плавная прокрутка */
+    padding: 20px 5%; 
+    
+    /* Скрываем полосу прокрутки */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE */
 }
 
-.card{
-    width: 400px;
+.cards-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+
+/* Карточка */
+.card {
+    /* 
+       flex: 0 0 85% означает:
+       - не сжиматься (0)
+       - не расти (0)
+       - ширина 85% от родителя
+       Оставшиеся 15% делятся на отступы, чтобы было видно края соседних карточек
+    */
+    flex: 0 0 85%; 
+    max-width: 400px; /* Ограничение, чтобы на планшетах не были гигантскими */
     height: auto;
     display: flex;
     flex-direction: column;
     background-color: #9a8780;
     border-radius: 20px;
+    overflow: hidden;
+    margin: 0 auto; /* Центрирование самой карточки внутри её места */
+    transition: transform 0.3s ease;
+}
 
-    img{
-        width: 100%;
-        height: 300px;
-        border-radius: 20px 20px 0 0;
-
+@media (min-width: 769px){
+    .card {
+        /* 
+           На ПК каждая карточка занимает 50% ширины контейнера.
+           gap: 20px добавится сверху, так что визуально будет 2 карточки
+        */
+        flex: 0 0 calc(50% - 10px); 
+        max-width: 500px; /* Можно увеличить макс. ширину для больших экранов */
     }
+
+    
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Чтобы фото не сплющивалось */
+    border-radius: 20px 20px 0 0;
 }
 
 
 
-.description{
-    padding:  10px 15px 10px 15px ;
+
+
+.description {
+    padding: 15px;
     display: flex;
     flex-direction: column;
-
-    a{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        line-height: 25px;
-        font-family: "Cousine";
-        font-weight: 600;
-        color: #2b211e;;
-
-    }
-
-    p{
-        font-family: "Cousine";
-        font-weight: 400px;
-        margin: 0;
-    }
+    flex-grow: 1;
 }
 
-.card:nth-child(1){
-    margin-left: 20vw;
+.description a {
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-family: "Cousine", sans-serif;
+    font-weight: 600;
+    color: #2b211e;
 }
+
+.description p {
+    font-family: "Cousine", sans-serif;
+    font-weight: 400; 
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Кнопки навигации */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #2b211e;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #2b211e;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: #fff;
+}
+
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
 
 /* Автор */
 .author{
@@ -513,6 +606,7 @@ body{
     gap: 250px;
 
     p{
+        flex: 0 0 600px;
         font-size: 18px;
         font-family: "Cousine";
         font-weight: 400;
@@ -557,9 +651,22 @@ body{
     height: 400px;
     position: absolute;
     opacity: 0.4;
-    margin-left: 900px;
-    margin-top: 100px;
+    margin-left: 80%;
+    margin-top: 5%;
     z-index: -1;
+}
+
+@media (max-width: 1546px){
+    .about{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .cake2{
+        margin-left: 750px;
+    }
 }
 
 /* футер */
@@ -718,7 +825,7 @@ footer{
 	}
 }
 
-.container-phil{
+.container.phil{
 	width: 100%;
 	max-width: 800px;
 	margin: 30px auto;
@@ -780,7 +887,7 @@ footer{
 	}
 }
 
-.container-history{
+.container.history{
 	padding: 20px;
 	border-bottom: 1px solid#724447;
 	border-top: 1px solid#724447;

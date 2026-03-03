@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="script.js" defer></script>
     <title>Кулинарный справочник</title>
 </head>
 <body>
@@ -96,27 +97,37 @@
                 <div class="line"></div>
                 <h2>Новинки</h2>
             </div>
-        <div class="container">            
-            </div>
-            <div class="cards">
+                 
+           
+            <div class="cards-wrapper">
+            <!-- Кнопка Влево -->
+            <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+            
+            <!-- Трек с карточками -->
+            <div class="cards-track" id="cardsTrack">
                 <div class="card">
-                    <img src="./img/Rolls.jpg" alt="">
-                   <div class="description">
+                    <img src="./img/Rolls.jpg" alt="Роллы">
+                    <div class="description">
                         <a href="categories/bake-recipe.html">Десертные роллы "Тирамису-суши"</a>
-                        <p>Итальянская классика в японском стиле!
-    Хрустящая основа из песочного печенья, нежный крем маскарпоне с кофейными нотками и свежие ягоды, завернутые в стиле суши. Элегантный десерт-обманка, который удивит сочетанием текстур и подачи.</p>
-                   </div>
+                        <p>Итальянская классика в японском стиле! Хрустящая основа из песочного печенья, нежный крем маскарпоне...</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <img src="./img/Burger.jpg" alt="бургер">
-                   <div class="description">
+                    <img src="./img/Burger.jpg" alt="Бургер">
+                    <div class="description">
                         <a href="categories/bake-recipe.html">Готический черный бургер</a>
-                        <p>Драматичный и аппетитный: угольно-тёмные булочки с активированным углём, сочная говяжья котлета с трюфельным акцентом, копченый сыр и грибы в чёрном соусе. Брутальная эстетика, но узнаваемый вкус любимого бургера.</p>
+                        <p>Драматичный и аппетитный: угольно-тёмные булочки с активированным углём, сочная говяжья котлета...</p>
                     </div>
-                   </div>
-
+                </div>
+                
+                <!-- Добавьте больше карточек для теста прокрутки -->
             </div>
+            
+            <!-- Кнопка Вправо -->
+            <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+        </div>
+        
         
     </section>
 
@@ -181,6 +192,28 @@
         } else {
             console.error('Элементы burgerBtn или navMenu не найдены!');
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const track = document.getElementById('cardsTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        // Функция для получения актуальной ширины карточки
+        const getCardWidth = () => {
+            const card = track.querySelector('.card');
+            if (!card) return 300;
+            // Получаем полную ширину карточки с учётом отступов
+            return card.getBoundingClientRect().width + 20; // 20px = gap
+        };
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+        });
+    });
     </script>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+	<script src="script.js" defer></script>
     <title>О проекте</title>
 </head>
 <body>
@@ -17,24 +18,30 @@
                     
                     
     
-                    <nav>
+                    <button class="burger" id="burgerBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+    
+                    <nav class="nav-menu" id="navMenu">
                         <ul class="menu-list"> 
                             <li class="menu-item">
-                                <a class="menu-link" href="index.html">Главная</a>
+                                <a class="menu-link-active" href="index.html">Главная</a>
                             </li>
                             <li class="menu-item">
                                 <a class="menu-link" href="article.html">Статьи</a>
                             </li>
                             <li class="menu-item">
-                                <a class="menu-link-active" href="about.html">О проекте</a>
+                                <a class="menu-link" href="about.html">О проекте</a>
                             </li>
                             <li class="menu-item">
                                 <a class="menu-link" href="login.html">Войти</a>
                             </li>
-							 <li class="menu-item">
+                            <li class="menu-item">
                                 <div class="textBox">
 							<input type="text" class="searchIng"
-							placeholder="Поиск">
+							    placeholder="Поиск">
 							<button class="ing">Найти!</button>
 						        </div>
                             </li>
@@ -59,7 +66,7 @@
 		</section>
 
 		<section class="philosophy">
-			<div class="container-phil">
+			<div class="container phil">
 				<h2>Наша философия</h2>
 
 				<ul class="phil-list">
@@ -78,7 +85,7 @@
 		
 
 		<section class="history">			
-			<div class="container-history">
+			<div class="container history">
 				<h2>История</h2>
 				<p>Все началось в 2022 году, когда создательница проекта попыталась испечь пирог по рецепту из интернета. После трех часов борьбы с тестом и слез над испорченной духовкой она поняла: миру нужен справочник без лишних сложностей. Так появился этот сайт - где каждый рецепт тестируется на адекватность обычными людьми</p></div>
 		</section>
