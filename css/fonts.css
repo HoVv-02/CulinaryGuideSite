@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "Cousine";
+    src: url(../fonts/Cousine/Cousine-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cousine";
+    src: url(../fonts/Cousine/Cousine-BoldItalic.ttf);
+    font-weight: 600;
+
+}
+
+@font-face {
+    font-family: "Pacifico";
+    src: url(../fonts/Pacifico-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Cousine";
+    src: url(../fonts/Cousine/Cousine-Italic.ttf);
+    font-weight: 400;
+    font-style: italic;
+}

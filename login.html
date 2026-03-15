@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+     <header>
+           
+                <div class="head-info">
+                    
+                    <div class="culinary">
+                       <p>Кулинарный <br> <span class="sprav">справочник</span></p>
+                    </div>
+                    
+                    
+    
+                    <nav>
+                        <ul class="menu-list"> 
+                            <li class="menu-item">
+                                <a class="menu-link" href="index.html">Главная</a>
+                            </li>
+                            <li class="menu-item">
+                                <a class="menu-link" href="article.html">Статьи</a>
+                            </li>
+                            <li class="menu-item">
+                                <a class="menu-link" href="about.html">О проекте</a>
+                            </li>
+                            <li class="menu-item">
+                                <a class="menu-link-active" href="login.html">Войти</a>
+                            </li>
+                             <li class="menu-item">
+                                <div class="textBox">
+							<input type="text" class="searchIng"
+							placeholder="Поиск">
+							<button class="ing">Найти!</button>
+						        </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+           
+    
+        </header>
+
+		<section class="login">
+			<div class="container-login">
+				
+				<form id = "register-form" class="auth-form">
+					<h1>Регистрация</h1>
+					<div class="form-content">
+						<div class="form-group">
+							<label for="name">Имя</label>
+							<input 
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Введите ваше имя"
+								required>
+	
+						<span class="error-message" id="name-err"></span>
+						</div>
+	
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email"
+							id="email"
+							placeholder="example@mail.com"
+							required>
+	
+							<span class="email-error" id="email-error"></span>
+						</div>
+	
+						<div class="form-group">
+							<label for="password">Пароль</label>
+	
+							<input type="password"
+							id="password"
+							name="password"
+							placeholder="Не менее 6 символов"
+							minlength="6"
+							required>
+	
+							<span class="error-message" id="password-error"></span>
+						</div>
+					</div>
+
+					<button class="reg-btn">Войти</button>
+
+					<p class="login-link">Уже есть аккаунт?  <a href="/login.html">Войти</a></p>
+				</form>
+			</div>
+		</section>
+
+		  <footer>
+         <ul class="menu-list-foot"> 
+                            <li class="menu-item-foot">
+                                <a class="menu-link" href="index.html">Главная</a>
+                            </li>
+                            <li class="menu-item-foot">
+                                <a class="menu-link" href="article.html">Статьи</a>
+                            </li>
+                            <li class="menu-item-foot">
+                                <a class="menu-link" href="about.html">О проекте</a>
+                            </li>
+                            <li class="menu-item-foot">
+                                <a class="menu-link" href="login.html">Войти</a>
+                            </li>
+                            <li class="menu-link-kont">
+                                Email: hello@cullinary.ru
+                            </li>
+                            <li class="menu-link-kont">
+                                Telegram:@culinary_help_bot
+                            </li>
+                        </ul>
+    </footer>
+
+        
+</body>
+</html>
